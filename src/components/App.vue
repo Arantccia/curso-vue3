@@ -1,15 +1,46 @@
 <script lang="ts">
 
-    import * as vue from "vue";
+import * as vue from "vue";
+import H1 from "./H1.vue";
+import Parra from "./Parra.vue";
+import {IUserDTO} from "./IUserDTO "
 
-    export default vue.defineComponent( {
-        name : "App",
+
+
+export default vue.defineComponent({
+    beforeCreate() { },
+    created() {
+        console.log(this.$props) 
+        console.log(this.$data)  
+        },
+        name: "App",
+        components: {
+            H1,
+            Parra
+           
+    },
+    data() {
+        return {
+            persona:{
+                 name: 'Juan',
+                surname: 'Perez',
+                age:10
+                } as IUserDTO
+                
+            }
+        }
     } );
 
 </script>
 
 <template>
+  
     <div>
-        Hello from App
+        <h1> APP.vue</h1>
+         <H1 text="Estamos en el componente H1" />
+         <Parra v-bind:person="persona" />
     </div>
+   
+  
+    
 </template>
