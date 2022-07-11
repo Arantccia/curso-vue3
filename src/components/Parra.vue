@@ -12,7 +12,7 @@ export default vue.defineComponent({
     name: "Parra",
 
     props: {
-        person: Object as vue.PropType<IUserDTO>
+        person: Object as vue.PropType<IUserDTO>,
         
     },
 
@@ -27,14 +27,23 @@ export default vue.defineComponent({
         return {
             todojunto: "" as string,
             statica: `nombre: ${this.person?.name}, apellido: ${this.person?.surname}, edad: ${this.person?.age}, random: ${Math.random()}` as string,
-            mensaje: "nombre:" + this.person?.name +","+ "apellido:" + this.person?.surname + ","+"edad:" + this.person?.age 
+            mensaje: "nombre:" + this.person?.name + "," + "apellido:" + this.person?.surname + "," + "edad:" + this.person?.age,
+            counter: 0 as number
             
         }
     },
 
     computed: {
-        returnPerson() {
-            return this.mensaje.split(',').reverse().join()
+        returnPerson():string {
+            return this.mensaje.split(',').reverse().join("")
+        },
+        prueba(): string {
+            
+         return this.person.name + "-" + this.person.surname +"-"+ this.person.age + "-"+ Math.random() 
+        },
+        metodo(): string {
+           return this.counter %2 === 0 ?`nombre: ${this.person.name }, edad: ${this.person.age = Math.random()*100 }` : `apellido: ${this.person.surname}, nombre: ${this.person.name}`
+            
         }
     }
 
@@ -53,10 +62,13 @@ export default vue.defineComponent({
     <p>{{statica}}</p>
     <hr/>
 
-    <p for="msm">return mensaje computed manejado a traves del input : <b>{{returnPerson}}</b> </p>
-    <input id="msm"  type="text" v-model="mensaje" >
-   
-   
+    <p>return mensaje computed manejado a traves del input : <b>{{returnPerson}}</b> </p>
+    <input   type="text" v-model="mensaje" >
+    <hr/>
+   <p for="msm">prueba : <b>{{prueba}}</b> </p>
+   <hr/>
+    <button @click="counter++">{{counter % 2 === 0 ? 'es Par' : ' es impar'}}</button>
+    <p>{{metodo}}</p>
 </template>
 
 <style scoped>

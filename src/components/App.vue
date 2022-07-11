@@ -11,7 +11,10 @@ export default vue.defineComponent({
     beforeCreate() { },
     created() {
         console.log(this.$props) 
-        console.log(this.$data)  
+        console.log(this.$data) 
+     /*    setInterval(() => {
+            this.persona.age = Math.random()*100
+        }, 1000) */ 
         },
         name: "App",
         components: {
@@ -26,8 +29,9 @@ export default vue.defineComponent({
                 surname: 'Perez',
                 age:10
                 } as IUserDTO
-                
-            }
+            ,
+             
+        }
         }
     } );
 
@@ -39,6 +43,7 @@ export default vue.defineComponent({
         <h1> APP.vue</h1>
          <H1 text="Estamos en el componente H1" />
          <Parra v-bind:person="persona" />
+      
     </div>
    
   

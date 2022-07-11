@@ -37,7 +37,7 @@ export default vue.defineComponent({
 
   computed: {
     cmputesTest() {
-    return this.counter
+    return this.counter %2 //calcula los pares es par si es === 0 
    }
   },
  
