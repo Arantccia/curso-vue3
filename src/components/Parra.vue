@@ -91,32 +91,36 @@ export default vue.defineComponent({
 </script>
 
 <template>
-    <h2> Estamos en el componente Parrafo</h2>
+    <h2 class="center"> Estamos en el componente Parrafo</h2>
   
     <button v-on:click="toLogic()">llama a doLogic</button>
-    <h3>Se visualiza el onclick del metodo: toLogic </h3>
+    <h3 class="center">Se visualiza el onclick del metodo: toLogic </h3>
       <p>{{todojunto}}</p>
     <hr/>
-    <h3>Se visualiza la variable statica </h3>
+    <h3 class="center">Se visualiza la variable statica </h3>
     <p>{{statica}}</p>
     <hr/>
-
+        <h3 class="center">computed: la funcion se ejecuta con el cambio del input y poniendo comas </h3>
         <p>return mensaje computed manejado a traves del input : <b>{{returnPerson}}</b> </p>
         <input   type="text" v-model="mensaje" >
     <hr/>
-        <p for="msm">prueba : <b>{{prueba}}</b> </p>
+        <h3 class="center">porque cambia el computed prueba cuando el computes metodo es par? por que en el computed metodo le hemos dicho this.person.age es igual a algo y cambia la variable </h3>
+        <p >prueba : <b>{{prueba}}</b> </p>
    <hr/>
-         <h3>computed cambiando si es par o inpar y watch cuando llega a 3 saltando modal</h3>
+         <h3 class="center">computed cambiando si es par o inpar y watch cuando llega a 3 saltando modal</h3>
         <button @click="counter++">{{counter % 2 === 0 ? 'es Par' : ' es impar'}}-{{counter}}</button>
         <p>{{metodo}}</p>
     <hr/>
 
-        <h3>watch en profundidad, con string, objeto y array (modificando -> necesita atributo deep y creando -> sin el atributo deep) </h3>
+        <h3 class="center">watch en profundidad, con string, objeto y array (modificando -> necesita atributo deep y creando -> sin el atributo deep) </h3>
         <input   type="text" v-model="movie" />
         <input   type="text" v-model="infoMovie.tittel" />
-        <input   type="number" v-model="infoMovie.year" />
-        <button @click="listaMovie.push('marvel')"> modifica array listaMovie -{{listaMovie.length}}</button>
-        <button @click="concatMovie=concatMovie.concat('tesis')"> crea unevo array concatMovie -{{concatMovie.length}}</button>
+        <input   type="number" v-model="infoMovie.year" /><br/>
+        <div class="padding">
+            <button  @click="listaMovie.push('marvel')"> modifica array listaMovie -{{listaMovie.length}}</button> &nbsp
+            <button  @click="concatMovie=concatMovie.concat('tesis')"> crea unevo array concatMovie -{{concatMovie.length}}</button>
+        </div>
+        
 
 </template>
 
@@ -128,6 +132,7 @@ button {
   padding: 10px;
   color: white;
   box-shadow: 2px 2px 3px darkgray;
+  text-align: center !important;
 }
 input {
   padding: 10px;
@@ -135,5 +140,11 @@ input {
   width: 250px;
   
 
+}
+.padding {
+    padding: 10px;
+}
+.center {
+    text-align: center;
 }
 </style>
