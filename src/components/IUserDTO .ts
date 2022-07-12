@@ -5,4 +5,9 @@ interface IUserDTO{
   age:number
 }
 
-export{IUserDTO}
+interface IinfoMovie{
+  tittel: string,
+  year: number
+}
+
+export{IUserDTO, IinfoMovie}
