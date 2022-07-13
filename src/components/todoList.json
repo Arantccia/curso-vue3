@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+     "name": "comprar",
+     "completed": false
+  },
+  {
+    "id": 2,
+     "name": "cocinar",
+     "completed": false
+  },
+  {
+    "id": 3,
+     "name": "jugar",
+     "completed": true
+  }
+]
+  
+
+  
