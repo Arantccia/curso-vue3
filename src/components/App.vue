@@ -3,7 +3,11 @@
 import * as vue from "vue";
 import H1 from "./H1.vue";
 import Parra from "./Parra.vue";
-import { IUserDTO } from "./IUserDTO "
+import TablaVue from "./Tabla.vue";
+import { IUserDTO, Itodo } from "./IUserDTO "
+import todoList from "./todoList.json"
+
+
 
 
 
@@ -22,10 +26,10 @@ export default vue.defineComponent({
         },
         name: "App",
         components: {
-            H1,
-            Parra
-           
-    },
+    H1,
+    Parra,
+    TablaVue
+},
     data() {
         return {
             persona:{
@@ -34,6 +38,8 @@ export default vue.defineComponent({
                 age:10
                 } as IUserDTO
             ,
+
+            todoDTOS: todoList as Itodo[]
              
         }
         }
@@ -44,10 +50,13 @@ export default vue.defineComponent({
 <template>
   
     <div>
-        <h1 className="bg-primary text-white text-center p-4"> APP.vue</h1>
-         <H1 text="Estamos en el componente H1" />
+        <h1 class="bg-primary text-white text-center p-4"> APP.vue</h1>
+        <hr/>
+             <H1 text="Estamos en el componente H1" />
+        <hr/>     
          <Parra v-bind:person="persona" />
-      
+        <hr/> 
+         <TablaVue v-bind:todoDTO="todoDTOS" />
     </div>
    
   

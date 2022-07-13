@@ -53,10 +53,12 @@ export default vue.defineComponent({
 </script>
 
 <template>
-    <h2> {{text}}</h2>
-
-    <button @click="counter++" >contador:{{counter}}</button>
-    <button v-on:click="userClick()" >contador methods:{{clicks}}</button>
+    <h2  className="text-center"> {{text}}</h2>
+    <div className="text-center">
+      <button @click="counter++" >contador:{{counter}}</button>
+      <button v-on:click="userClick()" >contador methods:{{clicks}}</button>
+    </div>
+    
 </template>
 
 <style scoped>
@@ -67,5 +69,12 @@ button {
   padding: 10px;
   color: white;
   box-shadow: 2px 2px 3px darkgray;
+}
+input {
+  padding: 10px;
+  border-radius:  4px 4px 4px 4px;
+  width: 250px;
+  
+
 }
 </style>

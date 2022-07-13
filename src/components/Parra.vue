@@ -1,14 +1,15 @@
 <script lang="ts">
 
 import * as vue from "vue";
-import {IUserDTO, IinfoMovie} from "./IUserDTO "
+import {IUserDTO, IinfoMovie, Emat} from "./IUserDTO "
 
 
 export default vue.defineComponent({
     beforeCreate() {console.log('estoy en beforeCreate')},
     created() {
         this.todojunto
-    },
+        
+      },
     name: "Parra",
 
     props: {
@@ -20,6 +21,13 @@ export default vue.defineComponent({
         toLogic():void {
             this.todojunto = `nombre: ${this.person.name}, apellido: ${this.person.surname}, edad: ${this.person.age}, random: ${Math.random()}`
         },
+        getRespon(): void{
+             console.log('estoy pensado')
+                      setTimeout(() => {
+                         console.log(`llama a los valores de math input ${this.math}`)   
+                        },2500)
+        }
+
        
     },
 
@@ -36,7 +44,8 @@ export default vue.defineComponent({
             } as IinfoMovie,
 
             listaMovie: ['star treck', 'dune'] as string[],
-            concatMovie: ['abre los ojos', 'palmeras en la nieve'] as string[]
+            concatMovie: ['abre los ojos', 'palmeras en la nieve'] as string[],
+            math:"" as  string,
             
         }
     },
@@ -83,6 +92,26 @@ export default vue.defineComponent({
                   handler(newValue) {
                     console.log(`llama a los valores de concatMovie que crea un nuevo Array ${newValue}`)
                 }
+        },
+          math: {
+              handler(newValue) {
+                  if (newValue.indexOf( "suma" ) > -1 || newValue.indexOf( "resta" ) > -1 || newValue.indexOf( "multiplica" ) > -1 || newValue.indexOf( "dividir" ) > -1) {
+                    console.log('estoy pensado')
+                      this.getRespon()
+                  } 
+                    
+                    
+                },
+            immediate: true   
+        },
+
+        maths(newValue) {
+            console.log(newValue)
+             if (newValue.indexOf( "suma" ) > -1 || newValue.indexOf( "resta" ) > -1 || newValue.indexOf( "multiplica" ) > -1 || newValue.indexOf( "dividir" ) > -1) {
+                    console.log('estoy pensado')
+                      this.getRespon()
+                  } 
+                    
         }
     }
 
@@ -102,7 +131,8 @@ export default vue.defineComponent({
     <hr/>
         <h3 class="center">computed: la funcion se ejecuta con el cambio del input y poniendo comas </h3>
         <p>return mensaje computed manejado a traves del input : <b>{{returnPerson}}</b> </p>
-        <input   type="text" v-model="mensaje" >
+         
+        <input  type="text" v-model="mensaje" >
     <hr/>
         <h3 class="center">porque cambia el computed prueba cuando el computes metodo es par? por que en el computed metodo le hemos dicho this.person.age es igual a algo y cambia la variable </h3>
         <p >prueba : <b>{{prueba}}</b> </p>
@@ -120,7 +150,10 @@ export default vue.defineComponent({
             <button  @click="listaMovie.push('marvel')"> modifica array listaMovie -{{listaMovie.length}}</button> &nbsp
             <button  @click="concatMovie=concatMovie.concat('tesis')"> crea unevo array concatMovie -{{concatMovie.length}}</button>
         </div>
-        
+      <hr/>
+
+        <h3 class="center">ejercicio 8 simular con watch una llamada a la api </h3> 
+         <input   type="text" v-model="math" />
 
 </template>
 
@@ -132,7 +165,6 @@ button {
   padding: 10px;
   color: white;
   box-shadow: 2px 2px 3px darkgray;
-  text-align: center !important;
 }
 input {
   padding: 10px;
