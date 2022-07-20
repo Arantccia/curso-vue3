@@ -62,7 +62,7 @@ export default vue.defineComponent({
         </tr>
       </thead>
       <tbody>
-        <TrTabla class="table table-striped" v-on:cambia="modifica" v-bind:borra="borrar" v-for="(value , index) in todoDTO " v-bind:key='value.id' v-bind:value="value" />
+        <TrTabla  v-on:cambia="modifica" v-bind:borra="borrar" v-for="(value , index) in todoDTO " v-bind:key='value.id' v-bind:value="value" />
         
       </tbody>
     </table>

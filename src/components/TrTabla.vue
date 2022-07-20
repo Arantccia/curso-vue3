@@ -18,6 +18,7 @@ export default vue.defineComponent({
   emit: ["cambia"],
 
   props: {
+
    value: {
      type: Object as vue.PropType<Itodo>,
      required: true,
@@ -39,7 +40,7 @@ export default vue.defineComponent({
     complete() {
       console.log(`este es el id de complete ${this.value.id}`)
       this.$emit('cambia', this.value.id)
-    //  
+    
     },
 
     remove(){
@@ -53,10 +54,9 @@ export default vue.defineComponent({
 
 
 <template>
-  <div>
     
-    <tr  class="table-striped">
-          <!-- <th scope="row" >{{index}}</th> -->
+    <tr >
+          <th scope="row" >0</th> 
           <td>{{value.id}}</td>
           <td>{{value.name}}</td>
           <td> 
@@ -71,5 +71,4 @@ export default vue.defineComponent({
           </td>
     </tr>
 
-  </div>
 </template>
