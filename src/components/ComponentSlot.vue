@@ -45,13 +45,9 @@ export default vue.defineComponent({
                     <h5 class="card-title">Cabecera slot</h5>
                     <p class="card-text">puedo poner un contenido por defecto</p>
                 </slot>
-                <slot>
-                    <lu>
-                        <li v-for="value in todoDTOS" v-bind:key="value.id">
-                            {{value.name}}-{{value.completed}}
-                        </li>
-                    </lu>
-                </slot>
+                <h4 v-for="value in todoDTOS" v-bind:key="value.id">
+                    <slot v-bind:listname="value.name" v-bind:listcompleted="value.completed"></slot> 
+                </h4>
             </div>
             
                 <div class="card-footer bg-transparent border-success">
