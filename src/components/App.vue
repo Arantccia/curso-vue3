@@ -6,26 +6,20 @@ import Parra from "./Parra.vue";
 import TablaVue from "./Tabla.vue";
 import ComponentDim1Vue from "./ComponentDim1.vue";
 import ComponentDim2Vue from "./ComponentDim2.vue";
+import ComponentSlot from "./ComponentSlot.vue"
 import { IUserDTO, Itodo } from "./IUserDTO "
 import todoList from "./todoList.json"
 import { faCommentsDollar } from "@fortawesome/free-solid-svg-icons";
 
-
-
-
-
-
-
-
 export default vue.defineComponent({
     
     beforeCreate() { },
-    created() {
-        console.log(this.$props) 
-        console.log(this.$data) 
-     /*    setInterval(() => {
-            this.persona.age = Math.random()*100
-        }, 1000) */ 
+        created() {
+            console.log(this.$props) 
+            console.log(this.$data) 
+        /*    setInterval(() => {
+                this.persona.age = Math.random()*100
+            }, 1000) */ 
         },
         name: "App",
         components: {
@@ -33,8 +27,10 @@ export default vue.defineComponent({
             Parra,
             TablaVue,
             ComponentDim1Vue,
-            ComponentDim2Vue
-    },
+            ComponentDim2Vue,
+            ComponentSlot
+            
+        },
         
         data() {
             return {
@@ -44,11 +40,9 @@ export default vue.defineComponent({
                     age:10
                     } as IUserDTO
                 ,
-
                 todoDTOS: todoList as Itodo[],
                 componentId: "ComponentDim1Vue"
-                
-                }
+            }
         },
 
         methods: {
@@ -77,11 +71,11 @@ export default vue.defineComponent({
             console.log(component);
             console.log(me.componentId);
             component === "ComponentDim1Vue" ? me.componentId = "ComponentDim2Vue" : me.componentId = "ComponentDim1Vue"
-        }
+            }
         },
        
                             
-        } );
+} );
 
 </script>
 
@@ -95,12 +89,29 @@ export default vue.defineComponent({
          <Parra v-bind:person="persona" />
         <hr/>  -->
          <TablaVue v-bind:todoDTO="todoDTOS" v-on:change="changeJason" v-bind:remuve="removeJason" />
-         <keep-alive>
-        <component v-bind:is="componentId" tag="sinkeepalive" />
+             <h3> con keep-alive</h3>
+          <keep-alive>
+            <component v-bind:is="componentId" tag="sinkeepalive" />
         </keep-alive>
+         <h3> sin keep-alive</h3>
         <component v-bind:is="componentId" />
-        <button type="button" className="btn btn-primary" v-on:click="changeComponent(componentId)">cambiar el componente</button>
-
+        <!-- <button type="button" className="btn btn-primary" v-on:click="changeComponent(componentId)">cambiar el componente</button>  -->
+      
+        <ComponentSlot />
+        <ComponentSlot>
+         <p> estoy metiendo mi contenido dentro del ejemplo dos</p>
+         <button type="button" className="btn btn-primary" v-on:click="changeComponent(componentId)">cambiar el componente</button>
+        </ComponentSlot>
+        <ComponentSlot>
+         <p>slot con nombre footer</p>
+         <template v-slot:footer > estoy poneniendo el footer desde el padre</template>
+        </ComponentSlot>
+        <ComponentSlot>
+         <p>pueba de pasar parametros del hijo al padre</p>
+         <template v-slot:content="name" > contenido data hijo {{name}}-{{name.nombre}}-{{name.apellido}}</template>
+        </ComponentSlot>
+    
+        
     </div>
    
   
