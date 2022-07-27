@@ -2,12 +2,13 @@
 <script lang="ts">
 
 import * as vue from "vue";
+import { Itodo } from "./IUserDTO ";
+import todoList from "./todoList.json"
 
 
 export default vue.defineComponent({
     name: "ComponentSlot",
-   
-    beforeCreate() { },
+       beforeCreate() { },
     created() {
         console.log('component slot');
     },
@@ -16,11 +17,11 @@ export default vue.defineComponent({
         console.log(this.$props) 
         console.log(this.$data)   
     }, 
-
     data(){
         return{
             name:'Arantxa' as string,
-            surname:'bujalance' as string
+            surname:'bujalance' as string,
+            todoDTOS: todoList as Itodo[],
         }
     }
   
@@ -33,11 +34,23 @@ export default vue.defineComponent({
     <div>
         <h2 className="text-success text-center">componente slot</h2>
         <div class="card border-success mb-3" style="max-width: 18rem;">
-            <div class="card-header bg-transparent border-success">cabezera sin slot</div>
+            <div class="card-header bg-transparent border-success">
+                <slot>
+                    cabezera sin slot
+                </slot>
+            
+            </div>
             <div class="card-body text-success">
                 <slot name="content" v-bind:nombre="name" v-bind:apellido="surname">
                     <h5 class="card-title">Cabecera slot</h5>
                     <p class="card-text">puedo poner un contenido por defecto</p>
+                </slot>
+                <slot>
+                    <lu>
+                        <li v-for="value in todoDTOS" v-bind:key="value.id">
+                            {{value.name}}-{{value.completed}}
+                        </li>
+                    </lu>
                 </slot>
             </div>
             
@@ -48,6 +61,8 @@ export default vue.defineComponent({
                 </div>
             
         </div>
+
+       
 <!-- 
         <b-card
             header="Card Header"

@@ -99,18 +99,21 @@ export default vue.defineComponent({
       
         <ComponentSlot />
         <ComponentSlot>
+            <template v-slot:default > <h3 className="text-danger">v-slot:default</h3> </template>
             <template v-slot:content >
                 <p> estoy metiendo mi contenido dentro del ejemplo dos</p>
                 <button type="button" className="btn btn-primary" v-on:click="changeComponent(componentId)">cambiar el componente</button>
             </template>
         </ComponentSlot>
         <ComponentSlot>
-            <p>slot con nombre footer</p>
+            <template v-slot:content>
+                <img src="https://picsum.photos/250" />
+            </template>
             <template v-slot:footer > estoy poneniendo el footer desde el padre</template>
         </ComponentSlot>
         <ComponentSlot>
-         <p>pueba de pasar parametros del hijo al padre</p>
-         <template v-slot:content="name" > contenido data hijo {{name}}-{{name.nombre}}-{{name.apellido}}</template>
+            <p>pueba de pasar parametros del hijo al padre</p>
+            <template v-slot:content="name" > contenido data hijo {{name}}-{{name.nombre}}-{{name.apellido}}</template>
         </ComponentSlot>
     
         
