@@ -32,7 +32,7 @@ export default vue.defineComponent({
 
 <template>
     <div>
-        <h2 className="text-success text-center">componente slot</h2>
+        <h2 className="text-success">componente slot</h2>
         <div class="card border-success mb-3" style="max-width: 18rem;">
             <div class="card-header bg-transparent border-success">
                 <slot>

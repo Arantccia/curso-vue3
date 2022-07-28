@@ -1,5 +1,6 @@
 <script lang="ts">
 
+import { faColonSign } from "@fortawesome/free-solid-svg-icons";
 import * as vue from "vue";
 import {Itodo} from "./IUserDTO "
 import TrTabla from "./TrTabla.vue";
@@ -7,9 +8,15 @@ import TrTabla from "./TrTabla.vue";
 
 export default vue.defineComponent({
     beforeCreate() {
-        console.log(this.todoDto);
+        console.log('todoDTo'+this.todoDto);
     },
-    created() { },
+    created() {
+      console.log(this.$attrs);
+      console.log(this.$attrs['prueba']);
+      console.log(this.$attrs.prueba);
+      console.log(this.$attrs['idAtrrs']);
+      console.log(this.$attrs.idAtrrs);
+     },
     beforeUpdate() { },
     name: "Tabla", 
     emit:['change'],
@@ -51,21 +58,20 @@ export default vue.defineComponent({
 </script>
 
 <template>
-<div>
-  <h1 className="text-center"> Aplicacion de ToDos</h1>
-   <div class="container">
-      <table class="table table-striped">
-      <thead>
-        <tr >
-          <th># - </th>
-          <th scope="col" className="form-inline"  v-for="(value , key, index) in todoDto " :key='index'>{{key}}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <TrTabla  v-on:cambia="modifica" v-bind:borra="borrar" v-for="(value , index) in todoDTO " v-bind:key='value.id' v-bind:value="value" />
-        
-      </tbody>
-    </table>
-    </div>
-   </div> 
+  <div>
+    <h1 className="text-center"> Aplicacion de ToDos</h1>
+
+        <table class="table table-striped">
+        <thead>
+          <tr >
+            <th># - </th>
+            <th scope="col" className="form-inline"  v-for="(value , key, index) in todoDto " :key='index'>{{key}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <TrTabla  v-on:cambia="modifica" v-bind:borra="borrar" v-for="(value , index) in todoDTO " v-bind:key='value.id' v-bind:value="value" />
+          
+        </tbody>
+      </table>
+  </div>
 </template>

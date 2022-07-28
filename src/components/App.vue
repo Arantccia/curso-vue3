@@ -15,8 +15,8 @@ export default vue.defineComponent({
     
     beforeCreate() { },
         created() {
-            console.log(this.$props) 
-            console.log(this.$data) 
+           /*  console.log(this.$props) 
+            console.log(this.$data)  */
         /*    setInterval(() => {
                 this.persona.age = Math.random()*100
             }, 1000) */ 
@@ -81,14 +81,14 @@ export default vue.defineComponent({
 
 <template>
   
-    <div>
+    <div className="container">
    <!--      <h1 class="bg-primary text-white text-center p-4"> APP.vue</h1>
         <hr/>
              <H1 text="Estamos en el componente H1" />
         <hr/>     
          <Parra v-bind:person="persona" />
         <hr/>  -->
-         <TablaVue v-bind:todoDTO="todoDTOS" v-on:change="changeJason" v-bind:remuve="removeJason" />
+         <TablaVue prueba="prueba" idAtrrs="15"  v-bind:todoDTO="todoDTOS" v-on:change="changeJason" v-bind:remuve="removeJason" />
              <h3> con keep-alive</h3>
           <keep-alive>
             <component v-bind:is="componentId" tag="sinkeepalive" />
