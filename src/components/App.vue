@@ -99,12 +99,12 @@ export default vue.defineComponent({
 <template>
   
     <div className="container">
-   <!--      <h1 class="bg-primary text-white text-center p-4"> APP.vue</h1>
-        <hr/>
-             <H1 text="Estamos en el componente H1" />
+         <!-- <h1 class="bg-primary text-white text-center p-4"> APP.vue</h1> -->
+        <!-- <hr/>
+             <H1 text="Estamos en el componente H1" /> -->
         <hr/>     
          <Parra v-bind:person="persona" />
-        <hr/>  -->
+        <hr/>  
          <TablaVue prueba="prueba" idAtrrs="15"  v-bind:todoDTO="todoDTOS" v-on:change="changeJason" v-bind:remuve="removeJason" />
              <h3  v-bind:class="objecClass"> con keep-alive</h3>
           <keep-alive>

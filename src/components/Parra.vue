@@ -8,7 +8,8 @@ export default vue.defineComponent({
     beforeCreate() {console.log('estoy en beforeCreate')},
     created() {
         this.todojunto
-        
+        console.log('refs'+this.$refs)
+        console.log(this.$refs)
       },
     name: "Parra",
 
@@ -26,6 +27,14 @@ export default vue.defineComponent({
                       setTimeout(() => {
                          console.log(`llama a los valores de math input ${this.math}`)   
                         },2500)
+        },
+
+        onfocus(newValue):void{
+            const me = this;
+            console.log(me.$refs)
+            me.$refs.myInputRef1.focus()
+            this.infoMovie.tittel = newValue
+            me.$refs.myInputRef2.value= this.infoMovie.tittel
         }
 
        
@@ -39,7 +48,7 @@ export default vue.defineComponent({
             counter: 0 as number,
             movie: 'Batman' as string,
             infoMovie: {
-                tittel: '',
+                tittel: 'lol',
                 year: 0
             } as IinfoMovie,
 
@@ -72,18 +81,22 @@ export default vue.defineComponent({
         },
         movie: {
             handler(newValue) {
-                console.log(`nuevo valor del watch movie string: ${newValue}`)
+                console.log(`nuevo valor del watch movie string: ${newValue}`);
+              
             },
             immediate: true           
         },
         infoMovie: {
                 handler(newValue) {
-                    console.log(`llama a los valores de infoMuvie objeto: ${newValue.tittel} y ${newValue.year}`)
-             },
+                  
+                    console.log(`llama a los valores de infoMuvie objeto: ${newValue.tittel} y ${newValue.year}`);
+                   
+                },
                 deep:true  
         },
         listaMovie: {
-                handler(newValue) {
+                handler(newValue) {     
+                    this.onfocus(newValue.at(-1))
                     console.log(`llama a los valores de listaMovie que modifica Array ${newValue}`)
                 },
              deep:true  
@@ -113,16 +126,17 @@ export default vue.defineComponent({
                   } 
                     
         }
-    }
+    },
+    
 
-    } );
+} );
 
 </script>
 
 <template>
     <h2 class="center"> Estamos en el componente Parrafo</h2>
   
-    <button v-on:click="toLogic()">llama a doLogic</button>
+<!--     <button v-on:click="toLogic()">llama a doLogic</button>
     <h3 class="center">Se visualiza el onclick del metodo: toLogic </h3>
       <p>{{todojunto}}</p>
     <hr/>
@@ -140,20 +154,21 @@ export default vue.defineComponent({
          <h3 class="center">computed cambiando si es par o inpar y watch cuando llega a 3 saltando modal</h3>
         <button @click="counter++">{{counter % 2 === 0 ? 'es Par' : ' es impar'}}-{{counter}}</button>
         <p>{{metodo}}</p>
-    <hr/>
+    <hr/> -->
 
         <h3 class="center">watch en profundidad, con string, objeto y array (modificando -> necesita atributo deep y creando -> sin el atributo deep) </h3>
         <input   type="text" v-model="movie" />
-        <input   type="text" v-model="infoMovie.tittel" />
-        <input   type="number" v-model="infoMovie.year" /><br/>
+        <input   type="text"  v-model="infoMovie.tittel"  ref="myInputRef2" :value="infoMovie.tittel"/>
+        <input   type="number" v-model="infoMovie.year"  ref="myInputRef1"  /><br/>
         <div class="padding">
+       
             <button  @click="listaMovie.push('marvel')"> modifica array listaMovie -{{listaMovie.length}}</button> &nbsp
             <button  @click="concatMovie=concatMovie.concat('tesis')"> crea unevo array concatMovie -{{concatMovie.length}}</button>
         </div>
       <hr/>
 
         <h3 class="center">ejercicio 8 simular con watch una llamada a la api </h3> 
-         <input   type="text" v-model="math" />
+         <input   type="text" v-model="math"> /
 
 </template>
 
