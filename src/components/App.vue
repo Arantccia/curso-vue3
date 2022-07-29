@@ -40,7 +40,11 @@ export default vue.defineComponent({
                     } as IUserDTO
                 ,
                 todoDTOS: todoList as Itodo[],
-                componentId: "ComponentDim1Vue"
+                componentId: "ComponentDim1Vue",
+                objecClass:{
+                 'text-warning': true as boolean,
+                 'text-info': false as boolean
+                }
             }
         },
         methods: {
@@ -68,7 +72,16 @@ export default vue.defineComponent({
             me.componentId = component;
             console.log(component);
             console.log(me.componentId);
-            component === "ComponentDim1Vue" ? me.componentId = "ComponentDim2Vue" : me.componentId = "ComponentDim1Vue"
+                if(component === "ComponentDim1Vue"){
+                    me.componentId = "ComponentDim2Vue" 
+                    me.objecClass['text-info'] = false
+                    me.objecClass['text-warning'] = true
+                } else{
+                    me.componentId = "ComponentDim1Vue"
+                    me.objecClass['text-info'] = true
+                    me.objecClass['text-warning'] = false
+                }
+            
             }
         },
 
@@ -93,17 +106,17 @@ export default vue.defineComponent({
          <Parra v-bind:person="persona" />
         <hr/>  -->
          <TablaVue prueba="prueba" idAtrrs="15"  v-bind:todoDTO="todoDTOS" v-on:change="changeJason" v-bind:remuve="removeJason" />
-             <h3> con keep-alive</h3>
+             <h3  v-bind:class="objecClass"> con keep-alive</h3>
           <keep-alive>
             <component v-bind:is="componentId" tag="sinkeepalive" />
         </keep-alive>
-         <h3> sin keep-alive</h3>
+         <h3  v-bind:class="objecClass"> sin keep-alive</h3>
         <component v-bind:is="componentId" />
         <!-- <button type="button" className="btn btn-primary" v-on:click="changeComponent(componentId)">cambiar el componente</button>  -->
       
         <ComponentSlot />
         <ComponentSlot>
-            <template v-slot:default="slotLoop" > <h3 className="text-danger">v-slot:default</h3> {{slotLoop.listname}} -{{ slotLoop.listcompleted}} </template>
+            <template v-slot:default="slotLoop" > <h3>v-slot:default</h3> {{slotLoop.listname}} -{{ slotLoop.listcompleted}} </template>
             <template v-slot:content >
                                 <button type="button" className="btn btn-primary" v-on:click="changeComponent(componentId)">cambiar el componente</button>
             </template>

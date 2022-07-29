@@ -18,12 +18,14 @@ export default vue.defineComponent({
         console.log(this.$props) 
         console.log(this.$data)   
     }, 
-    
+   
     data(){
         return {
             name:'Arantxa' as string,
             surname:'bujalance' as string,
-            todoDTOS: this.random ,
+            todoDTOS: this.random,
+             classRed: false as boolean,
+            classGreen: true as boolean,          
         }
     }
   
@@ -34,11 +36,11 @@ export default vue.defineComponent({
 
 <template>
     <div>
-        <h2 className="text-success">componente slot </h2>
+        <h2 className="otra" v-bind:class="{'text-success':classGreen, 'text-danger': classRed}">componente slot </h2>
         <div class="card border-success mb-3" style="max-width: 18rem;">
             <div class="card-header bg-transparent border-success">
                 <slot>
-                    cabezera sin slot
+                   <span >cabezera sin slot</span> 
                 </slot>
             
             </div>
