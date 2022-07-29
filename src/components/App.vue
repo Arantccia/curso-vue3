@@ -12,7 +12,7 @@ import todoList from "./todoList.json"
 import { faCommentsDollar } from "@fortawesome/free-solid-svg-icons";
 
 export default vue.defineComponent({
-    
+ 
     beforeCreate() { },
         created() {
            /*  console.log(this.$props) 
@@ -28,8 +28,7 @@ export default vue.defineComponent({
             TablaVue,
             ComponentDim1Vue,
             ComponentDim2Vue,
-            ComponentSlot
-            
+            ComponentSlot  
         },
         
         data() {
@@ -44,7 +43,6 @@ export default vue.defineComponent({
                 componentId: "ComponentDim1Vue"
             }
         },
-
         methods: {
             changeJason(id) {
                 console.log('estoy en changeJason')
@@ -73,8 +71,14 @@ export default vue.defineComponent({
             component === "ComponentDim1Vue" ? me.componentId = "ComponentDim2Vue" : me.componentId = "ComponentDim1Vue"
             }
         },
-       
-                            
+
+        provide(): Record<string, unknown> {
+            return {
+                random: vue.computed(() => this.todoDTOS),
+                lengthrandom: vue.computed(() => this.todoDTOS.lenght)
+            }
+        } ,
+                      
 } );
 
 </script>
@@ -114,7 +118,7 @@ export default vue.defineComponent({
             <p>  no le hemos dado conmbre al slot y hay dos por default</p>
             <template v-slot:content="name" > contenido data hijo {{name}}-{{name.nombre}}-{{name.apellido}}</template>
         </ComponentSlot>
-    
+    <H1 text="Estamos en el componente H1" />
         
     </div>
    

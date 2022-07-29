@@ -8,7 +8,8 @@ import todoList from "./todoList.json"
 
 export default vue.defineComponent({
     name: "ComponentSlot",
-       beforeCreate() { },
+    inject: ['random', 'lengthrandom'], 
+    beforeCreate() { },
     created() {
         console.log('component slot');
     },
@@ -17,11 +18,12 @@ export default vue.defineComponent({
         console.log(this.$props) 
         console.log(this.$data)   
     }, 
+    
     data(){
-        return{
+        return {
             name:'Arantxa' as string,
             surname:'bujalance' as string,
-            todoDTOS: todoList as Itodo[],
+            todoDTOS: this.random ,
         }
     }
   
@@ -32,7 +34,7 @@ export default vue.defineComponent({
 
 <template>
     <div>
-        <h2 className="text-success">componente slot</h2>
+        <h2 className="text-success">componente slot </h2>
         <div class="card border-success mb-3" style="max-width: 18rem;">
             <div class="card-header bg-transparent border-success">
                 <slot>
@@ -45,6 +47,7 @@ export default vue.defineComponent({
                     <h5 class="card-title">Cabecera slot</h5>
                     <p class="card-text">puedo poner un contenido por defecto</p>
                 </slot>
+                
                 <h4 v-for="value in todoDTOS" v-bind:key="value.id">
                     <slot v-bind:listname="value.name" v-bind:listcompleted="value.completed"></slot> 
                 </h4>
@@ -52,6 +55,7 @@ export default vue.defineComponent({
             
                 <div class="card-footer bg-transparent border-success">
                     <slot name="footer" >
+             
                     Footer slot
                     </slot>
                 </div>

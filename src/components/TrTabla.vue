@@ -54,7 +54,7 @@ export default vue.defineComponent({
 
 
 <template>
-    
+   
     <tr >
           <th scope="row" >0</th> 
           <td>{{value.id}}</td>

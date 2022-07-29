@@ -20,6 +20,7 @@ export default vue.defineComponent({
     beforeUpdate() { },
     name: "Tabla", 
     emit:['change'],
+    
     props: {
         todoDTO: {
             type: Array as vue.PropType<Itodo[]>,
