@@ -31,10 +31,12 @@ export default vue.defineComponent({
 
         onfocus(newValue):void{
             const me = this;
-            console.log(me.$refs)
+            console.log('entra en onfocus')
             me.$refs.myInputRef1.focus()
-            this.infoMovie.tittel = newValue
-            me.$refs.myInputRef2.value= this.infoMovie.tittel
+            console.log(newValue.at(-1)) // obtenemos el último valor de un array
+            this.infoMovie.tittel = newValue[0]
+            me.$refs.myInputRef2.value= 'juego'
+            console.log( me.$refs.myInputRef2.value);// cual es el valro real de este input?
         }
 
        
@@ -95,9 +97,10 @@ export default vue.defineComponent({
                 deep:true  
         },
         listaMovie: {
-                handler(newValue) {     
-                    this.onfocus(newValue.at(-1))
+                handler(newValue) {   
+                    console.log(newValue)    
                     console.log(`llama a los valores de listaMovie que modifica Array ${newValue}`)
+                    this.onfocus(newValue)
                 },
              deep:true  
         },
@@ -158,11 +161,11 @@ export default vue.defineComponent({
 
         <h3 class="center">watch en profundidad, con string, objeto y array (modificando -> necesita atributo deep y creando -> sin el atributo deep) </h3>
         <input   type="text" v-model="movie" />
-        <input   type="text"  v-model="infoMovie.tittel"  ref="myInputRef2" :value="infoMovie.tittel"/>
+        <input   type="text"  v-model="infoMovie.tittel"  ref="myInputRef2" value="" />
         <input   type="number" v-model="infoMovie.year"  ref="myInputRef1"  /><br/>
         <div class="padding">
        
-            <button  @click="listaMovie.push('marvel')"> modifica array listaMovie -{{listaMovie.length}}</button> &nbsp
+            <button  @click="listaMovie.push(infoMovie.tittel)"> modifica array listaMovie -{{listaMovie.length}}</button> &nbsp
             <button  @click="concatMovie=concatMovie.concat('tesis')"> crea unevo array concatMovie -{{concatMovie.length}}</button>
         </div>
       <hr/>

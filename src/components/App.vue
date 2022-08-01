@@ -7,9 +7,11 @@ import TablaVue from "./Tabla.vue";
 import ComponentDim1Vue from "./ComponentDim1.vue";
 import ComponentDim2Vue from "./ComponentDim2.vue";
 import ComponentSlot from "./ComponentSlot.vue"
+import CompFormDifVue from "./CompFormDif.vue";
 import { IUserDTO, Itodo } from "./IUserDTO "
 import todoList from "./todoList.json"
 import { faCommentsDollar } from "@fortawesome/free-solid-svg-icons";
+
 
 export default vue.defineComponent({
  
@@ -28,7 +30,8 @@ export default vue.defineComponent({
             TablaVue,
             ComponentDim1Vue,
             ComponentDim2Vue,
-            ComponentSlot  
+            ComponentSlot,
+            CompFormDifVue  
         },
         
         data() {
@@ -99,10 +102,10 @@ export default vue.defineComponent({
 <template>
   
     <div className="container">
-         <!-- <h1 class="bg-primary text-white text-center p-4"> APP.vue</h1> -->
+          <h1 class="bg-primary text-white text-center p-4"> APP.vue</h1> 
         <!-- <hr/>
              <H1 text="Estamos en el componente H1" /> -->
-        <hr/>     
+        <!-- <hr/>     
          <Parra v-bind:person="persona" />
         <hr/>  
          <TablaVue prueba="prueba" idAtrrs="15"  v-bind:todoDTO="todoDTOS" v-on:change="changeJason" v-bind:remuve="removeJason" />
@@ -111,14 +114,14 @@ export default vue.defineComponent({
             <component v-bind:is="componentId" tag="sinkeepalive" />
         </keep-alive>
          <h3  v-bind:class="objecClass"> sin keep-alive</h3>
-        <component v-bind:is="componentId" />
+        <component v-bind:is="componentId" /> -->
         <!-- <button type="button" className="btn btn-primary" v-on:click="changeComponent(componentId)">cambiar el componente</button>  -->
       
-        <ComponentSlot />
+<!--         <ComponentSlot />
         <ComponentSlot>
             <template v-slot:default="slotLoop" > <h3>v-slot:default</h3> {{slotLoop.listname}} -{{ slotLoop.listcompleted}} </template>
             <template v-slot:content >
-                                <button type="button" className="btn btn-primary" v-on:click="changeComponent(componentId)">cambiar el componente</button>
+                <button type="button" className="btn btn-primary" v-on:click="changeComponent(componentId)">cambiar el componente</button>
             </template>
         </ComponentSlot>
         <ComponentSlot>
@@ -131,7 +134,8 @@ export default vue.defineComponent({
             <p>  no le hemos dado conmbre al slot y hay dos por default</p>
             <template v-slot:content="name" > contenido data hijo {{name}}-{{name.nombre}}-{{name.apellido}}</template>
         </ComponentSlot>
-    <H1 text="Estamos en el componente H1" />
+    <H1 text="Estamos en el componente H1" /> -->
+    <CompFormDifVue />
         
     </div>
    
