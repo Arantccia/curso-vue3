@@ -13,6 +13,7 @@ import todoList from "./todoList.json"
 import { faCommentsDollar } from "@fortawesome/free-solid-svg-icons";
 
 
+
 export default vue.defineComponent({
  
     beforeCreate() { },
@@ -32,7 +33,7 @@ export default vue.defineComponent({
             ComponentDim1Vue,
             ComponentDim2Vue,
             ComponentSlot,
-            CompFormDifVue  
+            CompFormDifVue ,
         },
         
         data() {

@@ -11,14 +11,14 @@
   },
   {
     "id": 3,
-     "name": "jugar",
+     "name": "viajar",
      "completed": true
   },
 
   {
     "id": 5,
-     "name": "jugar",
-     "completed": true
+     "name": "coche",
+     "completed": false
   },
 
   {
