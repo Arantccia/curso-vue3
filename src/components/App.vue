@@ -24,6 +24,7 @@ export default vue.defineComponent({
             }, 1000) */ 
         },
         name: "App",
+      
         components: {
             H1,
             Parra,
