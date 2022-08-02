@@ -2,6 +2,8 @@
 
 import * as vue from "vue";
 import CompElementForm from "./CompElementForm.vue";
+import PruevaDirectiva from "./PruevaDirectiva.vue";
+
 
 
 
@@ -17,7 +19,8 @@ export default vue.defineComponent({
   name: "CompFormDif",
   inject:['random'],
   components:{
-    CompElementForm
+    CompElementForm,
+    PruevaDirectiva
   },
   data() {
     return {
@@ -31,7 +34,8 @@ export default vue.defineComponent({
       radioBotonDin: '' as string,
       dinamicRadio: Math.random(),
       listSelect: this.random,
-      customElement: ''
+      customElement: '',
+      pruebaElementDirectiva: false as boolean
     }
 
   }, 
@@ -44,9 +48,13 @@ export default vue.defineComponent({
 
 <template>
 <div>
-    <CompElementForm v-model="customElement" v-show="!customElement" />
-    {{customElement}}
-   <div className="container" v-show="customElement">
+    <PruevaDirectiva v-model="customElement" v-show="!pruebaElementDirectiva" />
+    {{pruebaElementDirectiva}}
+    <hr/> 
+  <!--   <CompElementForm v-model="customElement" v-show="!customElement" />
+    {{customElement}} -->
+    
+   <div className="container" v-show="pruebaElementDirectiva">
 
         <label for="message" className="form-label"> <span className="text-info bg-dark"> input:</span>{{` ${message}`}}</label>
         <input id="message" type="text" placeholder=" input text" v-model="message" className="form-control" />
