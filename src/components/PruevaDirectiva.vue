@@ -1,7 +1,7 @@
 <script lang="ts">
 
 import * as vue from "vue";
-
+import {directiveAran} from "./../directivas/directivasAran"
 
 export default vue.defineComponent({
   beforeCreate() {},
@@ -20,8 +20,10 @@ export default vue.defineComponent({
     },
   
   },
-  
-  data(): Record<string, unknown> {
+  directives:{
+    abujalance: directiveAran
+  },
+ data(): Record<string, unknown> {
     return{
         password: '' as string,
         rePassword: '' as string,
@@ -65,6 +67,7 @@ export default vue.defineComponent({
         <p v-directiveAran:paramDos.reverse.uppercase="argValueForDirective">Valor dinámico - Argumento fijo</p>
         <p v-directiveAran:[paramName]="'literal string'">Valor literal -Argumento dinámico</p>
         <p v-directiveAran:paramDos="{pru1:1, pru2: 2}">Valor literal - Objeto</p>
-        <p v-directiveAran:paramDos.a.b>Lo cambia la directiva</p>              
+        <p v-directiveAran:paramDos.a.b>Lo cambia la directiva</p>
+        <p v-abujalance>Lo cambia la directiva</p>               
    </div>
 </template>

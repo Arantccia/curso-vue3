@@ -5,13 +5,13 @@ function addAlert(){
 }
 
 function genDifPrueba(value: string | number, name: string | undefined ,modifiers: Record<string, boolean>) :string {
-    value = JSON.stringify(modifiers);
+    value = JSON.stringify(value);
     let output: string = "";
 
     if(name){
         output = `AranDirective - Nombre del argumento: ${name}. valor del argumneto: ${value}, ver modifiers ${modifiers[0]}`
     }else{
-        output = `AranDirective - Sin Nombre del argumento, valor del argumneto: ${value}, ver modifiers ${modifiers}`
+        output += `Modificadors: ${value}, ver modifiers ${JSON.stringify(modifiers)}`
     }
 
     return output
@@ -25,6 +25,7 @@ const directiveAran: vue.Directive = {
         console.log('binding', binding);
         console.log('vNode', vNode);
         el.className = "aram-class"
+        el.style.border = "1px solid red"
         el.innerText = genDifPrueba(binding.value, binding.arg, binding.modifiers)
        
      
