@@ -50,11 +50,11 @@ export default vue.defineComponent({
 
 <template>
 <div>
-    <PruevaDirectiva v-model="customElement"  v-show="!customElement" />
+    <!-- <PruevaDirectiva v-model="customElement"  v-show="!customElement" />
     {{pruebaElementDirectiva}}
-    <hr/> 
-  <!--   <CompElementForm v-model="customElement" v-show="!customElement" />
-    {{customElement}} -->
+    <hr/>  -->
+    <CompElementForm v-model="customElement" v-show="!customElement" />
+    {{customElement}}
     
    <div className="container" v-show="customElement">
 

@@ -10,7 +10,11 @@
     </head>
 
     <body>
-
+        <div id="teleport-test"></div>
+        <div id="teleport"></div>
+        <div id="teleport-test"></div>
+        <div id="teleport-A" class="border border-warning"></div>
+        <div id="teleport-B" class="border border-success border-5"></div>
         <div id="bootstrap"></div>
         <% for (key in htmlWebpackPlugin.files.js) { %>
         <script type="text/javascript" src=".<%= htmlWebpackPlugin.files.js[key] %>"></script>

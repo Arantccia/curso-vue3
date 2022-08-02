@@ -11,6 +11,8 @@ import CompFormDifVue from "./CompFormDif.vue";
 import { IUserDTO, Itodo } from "./IUserDTO "
 import todoList from "./todoList.json"
 import { faCommentsDollar } from "@fortawesome/free-solid-svg-icons";
+import CompTeleport from "./CompTeleport.vue";
+
 
 
 
@@ -33,7 +35,8 @@ export default vue.defineComponent({
             ComponentDim1Vue,
             ComponentDim2Vue,
             ComponentSlot,
-            CompFormDifVue ,
+            CompFormDifVue,
+            CompTeleport
         },
         
         data() {
@@ -105,7 +108,8 @@ export default vue.defineComponent({
   
     <div className="container">
           <h1 class="bg-primary text-white text-center p-4"> APP.vue</h1> 
-        <!-- <hr/>
+          <CompTeleport />
+            <!-- <hr/>
              <H1 text="Estamos en el componente H1" /> -->
         <!-- <hr/>     
          <Parra v-bind:person="persona" />
