@@ -5,11 +5,11 @@ function addAlert(){
 }
 
 function genDifPrueba(value: string | number, name: string | undefined ,modifiers: Record<string, boolean>) :string {
-    value = JSON.stringify(value);
+    value = JSON.stringify(modifiers);
     let output: string = "";
 
     if(name){
-        output = `AranDirective - Nombre del argumento: ${name}. valor del argumneto: ${value}, ver modifiers ${modifiers}`
+        output = `AranDirective - Nombre del argumento: ${name}. valor del argumneto: ${value}, ver modifiers ${modifiers[0]}`
     }else{
         output = `AranDirective - Sin Nombre del argumento, valor del argumneto: ${value}, ver modifiers ${modifiers}`
     }
@@ -25,7 +25,9 @@ const directiveAran: vue.Directive = {
         console.log('binding', binding);
         console.log('vNode', vNode);
         el.className = "aram-class"
-        el.addEventListener('click', addAlert)
+        el.innerText = genDifPrueba(binding.value, binding.arg, binding.modifiers)
+       
+     
     },
     beforeMount (el : HTMLElement, binding : vue.DirectiveBinding, vNode : vue.VNode) {
         console.log('beforeMount');
@@ -38,6 +40,7 @@ const directiveAran: vue.Directive = {
         console.log('el', el);
         console.log('binding', binding);
         console.log('vNode', vNode);
+        
     },
     beforeUpdate (el : HTMLElement, binding : vue.DirectiveBinding, vNode : vue.VNode, pVNode : vue.VNode){
         console.log('beforeUpdate');
@@ -52,12 +55,15 @@ const directiveAran: vue.Directive = {
         console.log('binding', binding);
         console.log('vNode', vNode);
         console.log('pVNode', pVNode);
+        el.innerText = genDifPrueba(binding.value, binding.arg, binding.modifiers)
     },
     beforeUnmount (el : HTMLElement, binding : vue.DirectiveBinding, vNode : vue.VNode) {
         console.log('beforeUnmount');
         console.log('el', el);
         console.log('binding', binding);
         console.log('vNode', vNode);
+        el.addEventListener('click', addAlert)
+        
     },
     unmounted (el : HTMLElement, binding : vue.DirectiveBinding, vNode : vue.VNode) {
         console.log('unmounted');

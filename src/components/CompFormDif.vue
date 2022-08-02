@@ -22,6 +22,8 @@ export default vue.defineComponent({
     CompElementForm,
     PruevaDirectiva
   },
+
+
   data() {
     return {
       message: '' as string,
@@ -48,13 +50,13 @@ export default vue.defineComponent({
 
 <template>
 <div>
-    <PruevaDirectiva v-model="customElement" v-show="!pruebaElementDirectiva" />
+    <PruevaDirectiva v-model="customElement"  v-show="!customElement" />
     {{pruebaElementDirectiva}}
     <hr/> 
   <!--   <CompElementForm v-model="customElement" v-show="!customElement" />
     {{customElement}} -->
     
-   <div className="container" v-show="pruebaElementDirectiva">
+   <div className="container" v-show="customElement">
 
         <label for="message" className="form-label"> <span className="text-info bg-dark"> input:</span>{{` ${message}`}}</label>
         <input id="message" type="text" placeholder=" input text" v-model="message" className="form-control" />
