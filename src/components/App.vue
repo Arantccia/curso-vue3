@@ -12,6 +12,8 @@ import { IUserDTO, Itodo } from "./IUserDTO "
 import todoList from "./todoList.json"
 import { faCommentsDollar } from "@fortawesome/free-solid-svg-icons";
 import CompTeleport from "./CompTeleport.vue";
+import CompRadioTabla from "./CompRadioTabla.vue"
+
 
 
 
@@ -36,7 +38,8 @@ export default vue.defineComponent({
             ComponentDim2Vue,
             ComponentSlot,
             CompFormDifVue,
-            CompTeleport
+            CompTeleport,
+            CompRadioTabla
         },
         
         data() {
@@ -96,7 +99,9 @@ export default vue.defineComponent({
         provide(): Record<string, unknown> {
             return {
                 random: vue.computed(() => this.todoDTOS),
-                lengthrandom: vue.computed(() => this.todoDTOS.lenght)
+                listToDo: vue.computed(() => this.todoDTOS),
+                changeJason: vue.computed(() => this.changeJason),
+                removeJason: vue.computed(() => this.removeJason)
             }
         } ,
                       
@@ -107,8 +112,12 @@ export default vue.defineComponent({
 <template>
   
     <div className="container">
-          <h1 class="bg-primary text-white text-center p-4"> APP.vue</h1> 
-          <CompTeleport />
+          <h1 class="bg-primary text-white text-center p-4"> APP</h1> 
+            <CompRadioTabla />
+
+
+
+          <!-- <CompTeleport /> -->
             <!-- <hr/>
              <H1 text="Estamos en el componente H1" /> -->
         <!-- <hr/>     
@@ -141,7 +150,7 @@ export default vue.defineComponent({
             <template v-slot:content="name" > contenido data hijo {{name}}-{{name.nombre}}-{{name.apellido}}</template>
         </ComponentSlot>
     <H1 text="Estamos en el componente H1" /> -->
-    <CompFormDifVue />
+   <!--  <CompFormDifVue /> -->
         
     </div>
    

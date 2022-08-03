@@ -38,7 +38,7 @@ export default vue.defineComponent({
         </teleport>
         
         {{possition}}
-        <input name="teleportposition" type="radio"  v-model="teleportposition" v-bind:value="'teleport-A'" />A
+        <input name="teleportposition" type="radio" v-model="teleportposition" v-bind:value="'teleport-A'" />A
         <input name="teleportposition" type="radio" v-model="teleportposition" v-bind:value="'teleport-B'" />B
 
         <input name="disableTeleport" type="checkbox"  v-model="disableTeleport" />disabled

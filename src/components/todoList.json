@@ -2,31 +2,41 @@
   {
     "id": 1,
      "name": "comprar",
+     "descripcion":"pdt",
      "completed": false
   },
   {
     "id": 2,
      "name": "cocinar",
+     "descripcion":"pdt",
      "completed": false
   },
   {
     "id": 3,
      "name": "viajar",
+     "descripcion":"pdt",
      "completed": true
   },
 
   {
     "id": 5,
      "name": "coche",
+     "descripcion":"pdt",
      "completed": false
   },
 
   {
     "id": 6,
      "name": "jugar",
+     "descripcion":"pdt",
+     "completed": true
+  },
+  {
+    "id": 6,
+     "name": "jugar",
+     "descripcion":"pdt",
      "completed": true
   }
-
 ]
   
 
