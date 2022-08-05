@@ -61,10 +61,6 @@ export default vue.defineComponent({
       </tbody>
     </table>
 
-    <CompFormEjer
-      v-if="showForm"
-      className="text-center"
-      v-bind:valueObject="valueObject"
-    />
+    <CompFormEjer v-if="showForm" v-bind:valueObject="valueObject" />
   </div>
 </template>

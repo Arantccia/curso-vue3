@@ -55,55 +55,65 @@ export default vue.defineComponent({
 </script>
 
 <template>
-  <form className="container">
-    <div className="form-inline text-center">
-      <div className="form-check my-1 me-sm-2">
-        <label className="form-check-label me-2 text-primary" for="negrita">
-          Label a Negrita:
-        </label>
-        <input type="checkbox" id="negrita" value="negrita" v-model="checkboxMulti" />
-
-        <label className="form-check-label me-2 ms-5 text-primary" for="rojo">
-          Label a Rojo:
-        </label>
-        <input type="checkbox" id="rojo" value="rojo" v-model="checkboxMulti" />
-      </div>
-
-      <div className="form-row ">
-        <div className="form-group ">
-          <label for="name" className="col-form-label" v-bind:class="objecClass">
-            Nombre de la Tarea
+  <div className="formu">
+    <form>
+      <div className="form-inline text-center mt-2 mb-2">
+        <div className="form-check my-1 me-sm-2">
+          <label className="form-check-label me-2 text-primary" for="negrita">
+            Label a Negrita:
           </label>
-          <input
-            type="text"
-            className="form-control"
-            id="name"
-            placeholder="name"
-            v-model="valueObject.name"
-          />
-        </div>
-        <div className="form-group ">
-          <label for="descripcion" className="col-form-label" v-bind:class="objecClass">
-            Escriba descrpción
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="descripcion"
-            placeholder="descripcion"
-            v-model="valueObject.descripcion"
-            ref="completeFocus"
-          />
-        </div>
-        <div id="descripcionHelp" className="form-text">Campo obligatorío</div>
-      </div>
-    </div>
+          <input type="checkbox" id="negrita" value="negrita" v-model="checkboxMulti" />
 
-    <button type="submit" class="btn btn-primary btn-lg mt-5" v-on:click="editValue">
-      Grabar cambios
-    </button>
-  </form>
+          <label className="form-check-label me-2 ms-5 text-primary" for="rojo">
+            Label a Rojo:
+          </label>
+          <input type="checkbox" id="rojo" value="rojo" v-model="checkboxMulti" />
+        </div>
+
+        <div className="form-row ms-2 me-2">
+          <div className="form-group ">
+            <label for="name" className="col-form-label" v-bind:class="objecClass">
+              Nombre de la Tarea
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="name"
+              placeholder="name"
+              v-model="valueObject.name"
+            />
+          </div>
+          <div className="form-group">
+            <label for="descripcion" className="col-form-label" v-bind:class="objecClass">
+              Escriba descrpción
+            </label>
+            <input
+              type="text"
+              className="form-control "
+              id="descripcion"
+              placeholder="descripcion"
+              v-model="valueObject.descripcion"
+              ref="completeFocus"
+            />
+          </div>
+          <div id="descripcionHelp" className="form-text">Campo obligatorío</div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg mt-3" v-on:click="editValue">
+          Grabar cambios
+        </button>
+      </div>
+    </form>
+  </div>
 </template>
+<style scoped>
+.formu {
+  margin-left: 15rem;
+  margin-right: 15rem;
+  margin-top: 1 px;
+  margin-bottom: 1 px;
+  border: 1px solid #0d6efd;
+}
+</style>
 
 <!--    <div className="form-inline">
       <label for="name" className="form-label text-primary"> name:</label>
