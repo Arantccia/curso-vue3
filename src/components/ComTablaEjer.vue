@@ -27,14 +27,15 @@ export default vue.defineComponent({
     return {
       list: this.listToDo,
       showForm: false as boolean,
-      valueList: {} as Itodo,
+      valueObject: {} as Itodo,
     };
   },
   methods: {
     showFormtr(data, boolean) {
+      console.log("tabla");
       console.log(data);
       this.showForm = boolean;
-      this.valueList = { ...data };
+      this.valueObject = { ...data };
     },
   },
 });
@@ -56,12 +57,16 @@ export default vue.defineComponent({
           v-for="(value, index) in list"
           v-bind:key="value.id"
           v-bind:value="value"
-          v-bind:ind="index"
+          v-bind:index="index.toString()"
           v-on:showForm="showFormtr"
         />
       </tbody>
     </table>
 
-    <CompFormEjer v-if="showForm" v-bind:valueList="valueList" />
+    <CompFormEjer
+      v-if="showForm"
+      className="text-center"
+      v-bind:valueObject="valueObject"
+    />
   </div>
 </template>

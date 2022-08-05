@@ -16,7 +16,11 @@ export default vue.defineComponent({
       componentId: "ComTablaEjer",
     };
   },
-
+  computed: {
+    valor() {
+      return this.valueObject;
+    },
+  },
   watch: {
     radioBoton: {
       handler(newValue) {

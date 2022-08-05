@@ -7,16 +7,16 @@ export default vue.defineComponent({
   name: "CompTrEjer",
   inject: ["changeJason", "removeJason"],
   emits: ["showForm"],
-  beforeUpdate() {
-    console.log(this.$refs);
-    console.log("beforeUpdatee tr");
-  },
+  beforeUpdate() {},
   props: {
     value: {
       type: Object as vue.PropType<Itodo>,
       required: true,
     },
-    ind: Number,
+    index: {
+      type: String as vue.PropType<string>,
+      required: true,
+    },
   },
 
   data() {
@@ -48,7 +48,7 @@ export default vue.defineComponent({
 <template>
   {{}}
   <tr v-on:click="clickForm">
-    <th scope="row">{{ ind }} {{ showFormtr }}</th>
+    <th scope="row">{{ index }} {{ showFormtr }}</th>
     <td>{{ val.id }}</td>
     <td>{{ val.name }}</td>
     <td>{{ val.descripcion }}</td>

@@ -9,7 +9,7 @@ export default vue.defineComponent({
 
   name: "CompFormEjer",
   props: {
-    valueList: {
+    valueObject: {
       type: Object as vue.PropType<Itodo>,
       required: true,
     },
@@ -17,7 +17,7 @@ export default vue.defineComponent({
   data() {
     return {
       checkboxMulti: [] as string[],
-      val: this.valueList as Itodo,
+      /* val: this.valueObject as Itodo, */
     };
   },
   methods: {
@@ -26,51 +26,50 @@ export default vue.defineComponent({
       console.log(this.value);
     },
   },
+  /*   watch: {
+    valueObject: {
+      handler(newValue, oldValue) {
+        this.val = newValue;
+      },
+    },
+  }, */
 });
 </script>
 
 <template>
   <form>
-    <div className="form-row">
-      <div className="form-group col-md-6">
-        <label for="name" className="col-form-label">name</label>
-        <input
-          type="text"
-          className="form-control"
-          id="name"
-          placeholder="name"
-          v-model="val.name"
-        />
-      </div>
-      <div className="form-group col-md-6">
-        <label for="descripcion" className="col-form-label">descripcion</label>
-        <input
-          type="text"
-          className="form-control"
-          id="descripcion"
-          placeholder="descripcion"
-          v-model="val.descripcion"
-          ref="completeFocus"
-        />
-      </div>
-      <div id="descripcionHelp" className="form-text">Campo obligatorío</div>
-    </div>
-
-    <div classNameName="form-inline">
-      <div className="form-check my-1 me-sm-2">
-        <label className="form-check-label me-2 ms-2 text-primary" for="negrita">
-          Negrita:
-        </label>
+    <div className="form-inline">
+      <div className="form-check">
+        <label className="form-check-label me-2 ms-2 " for="negrita"> Negrita: </label>
         <input type="checkbox" id="negrita" value="negrita" v-model="checkboxMulti" />
-        <label className="form-check-label me-2 ms-2 text-primary" for="rojo"
-          >Rojo:</label
-        >
+        <label className="form-check-label me-2 ms-2 " for="rojo">Rojo:</label>
         <input type="checkbox" id="rojo" value="rojo" v-model="checkboxMulti" />
       </div>
 
-      <!--    <button type="button" class="btn btn-primary btn-lg mt-5" v-on:click="editValue">
-      Grabar cambios
-    </button> -->
+      <div className="form-row ">
+        <div className="form-group ">
+          <label for="name" className="col-form-label">name</label>
+          <input
+            type="text"
+            className="form-control"
+            id="name"
+            placeholder="name"
+            v-model="valueObject.name"
+          />
+        </div>
+        <div className="form-group ">
+          <label for="descripcion" className="col-form-label">descripcion</label>
+          <input
+            type="text"
+            className="form-control"
+            id="descripcion"
+            placeholder="descripcion"
+            v-model="valueObject.descripcion"
+            ref="completeFocus"
+          />
+        </div>
+        <div id="descripcionHelp" className="form-text">Campo obligatorío</div>
+      </div>
     </div>
 
     <button type="submit" class="btn btn-primary btn-lg mt-5" v-on:click="editValue">
@@ -123,3 +122,7 @@ export default vue.defineComponent({
       v-model="checkboxMulti"
     />
     <label className="form-check-label" for="rojo">rojo</label> -->
+
+<!--    <button type="button" class="btn btn-primary btn-lg mt-5" v-on:click="editValue">
+      Grabar cambios
+    </button> -->
