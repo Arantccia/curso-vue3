@@ -1,91 +1,125 @@
 <script lang="ts">
 import * as vue from "vue";
+import { Itodo } from "./IUserDTO ";
 
 export default vue.defineComponent({
-  beforeCreate() {},
-  created() {
-    //this.index
+  mounted() {
+    this.$refs.completeFocus.focus();
   },
-  beforeUpdate() {},
+
   name: "CompFormEjer",
-  inject: ["random"],
+  props: {
+    valueList: {
+      type: Object as vue.PropType<Itodo>,
+      required: true,
+    },
+  },
   data() {
     return {
-      message: "" as string,
-      area: "" as string,
-      checkboxLonly: false as boolean,
       checkboxMulti: [] as string[],
-      radioBoton: "" as string,
-      selectArray: [] as string[],
-      selectMulti: [] as string[],
-      radioBotonDin: "" as string,
-      dinamicRadio: Math.random(),
-      listSelect: this.random,
-      customElement: "",
-      pruebaElementDirectiva: false as boolean,
+      val: this.valueList as Itodo,
     };
+  },
+  methods: {
+    editValue() {
+      this.$refs.completeFocus.focus();
+      console.log(this.value);
+    },
   },
 });
 </script>
 
 <template>
-  <div>
-    <div className="container">
-      <label for="message" className="form-label">
-        <span className="text-info bg-dark"> input:</span>{{ ` ${message}` }}</label
-      >
-      <input
-        id="message"
-        type="text"
-        placeholder=" input text"
-        v-model="message"
-        className="form-control"
-      />
-      <label for="area" className="form-label">
-        <span className="text-info bg-dark">textarea:</span>{{ ` ${area}` }}</label
-      >
-      <textarea
-        id="area"
-        type="text"
-        placeholder=" input textarea"
-        v-model="area"
-        className="form-control"
-      />
-      <div className="form-inline">
-        <label class="form-check-label" for="checkboxLonly"
-          ><span className="text-info bg-dark">checkboxLonly:</span
-          >{{ ` ${checkboxLonly}` }}</label
-        >
+  <form>
+    <div className="form-row">
+      <div className="form-group col-md-6">
+        <label for="name" className="col-form-label">name</label>
         <input
-          type="checkbox"
-          id="checkboxLonly"
-          v-model="checkboxLonly"
-          true-value="soy true"
-          false-value="soy falso"
+          type="text"
+          className="form-control"
+          id="name"
+          placeholder="name"
+          v-model="val.name"
         />
-        <div class="form-check my-1 me-sm-2">
-          <label class="form-check-label me-2" for="eustasio"
-            ><span className="text-info bg-dark">checkboxMulti eustasio:</span
-            >{{ checkboxMulti[0] === "undefined" ? "" : checkboxMulti[0] }}</label
-          >
-          <input type="checkbox" id="eustasio" value="eustasio" v-model="checkboxMulti" />
-          <label class="form-check-label me-2 ms-2" for="rigoberto"
-            ><span className="text-info bg-dark">checkboxMulti rigoberto:</span
-            >{{ checkboxMulti[1] === "undefined" ? "" : checkboxMulti[1] }}</label
-          >
-          <input
-            type="checkbox"
-            id="rigoberto"
-            value="rigoberto"
-            v-model="checkboxMulti"
-          />
-          <label class="form-check-label me-2 ms-2" for="gerardo"
-            ><span className="text-info bg-dark">checkboxMulti gerardo:</span
-            >{{ checkboxMulti[2] === "undefined" ? "" : checkboxMulti[2] }}</label
-          >
-          <input type="checkbox" id="rigoberto" value="gerardo" v-model="checkboxMulti" />
-        </div>
       </div>
+      <div className="form-group col-md-6">
+        <label for="descripcion" className="col-form-label">descripcion</label>
+        <input
+          type="text"
+          className="form-control"
+          id="descripcion"
+          placeholder="descripcion"
+          v-model="val.descripcion"
+          ref="completeFocus"
+        />
+      </div>
+      <div id="descripcionHelp" className="form-text">Campo obligatorío</div>
     </div>
-  </div>
+
+    <div classNameName="form-inline">
+      <div className="form-check my-1 me-sm-2">
+        <label className="form-check-label me-2 ms-2 text-primary" for="negrita">
+          Negrita:
+        </label>
+        <input type="checkbox" id="negrita" value="negrita" v-model="checkboxMulti" />
+        <label className="form-check-label me-2 ms-2 text-primary" for="rojo"
+          >Rojo:</label
+        >
+        <input type="checkbox" id="rojo" value="rojo" v-model="checkboxMulti" />
+      </div>
+
+      <!--    <button type="button" class="btn btn-primary btn-lg mt-5" v-on:click="editValue">
+      Grabar cambios
+    </button> -->
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-lg mt-5" v-on:click="editValue">
+      Grabar cambios
+    </button>
+  </form>
 </template>
+
+<!--    <div className="form-inline">
+      <label for="name" className="form-label text-primary"> name:</label>
+      <input
+        id="name"
+        type="text"
+        placeholder="name"
+        v-model="val.name"
+        className="form-control"
+      />
+      <label for="descripcion" className="form-label text-primary">Description:</label>
+      <input
+        id="descripcion"
+        type="text"
+        placeholder="Description"
+        className="form-control"
+        v-model="val.descripcion"
+        ref="completeFocus"
+      />
+    </div> -->
+
+<!--     <div className="mb-3 form-check">
+      <input
+        type="checkbox"
+        className="form-check-input"
+        id="negrita"
+        v-model="checkboxMulti"
+      />
+      <label className="form-check-label" for="negrita">negrita</label>
+
+      <input
+        type="checkbox"
+        className="form-check-input"
+        id="rojo"
+        v-model="checkboxMulti"
+      />
+      <label className="form-check-label" for="rojo">rojo</label>
+    </div>
+    <input
+      type="checkbox"
+      className="form-check-input"
+      id="rojo"
+      v-model="checkboxMulti"
+    />
+    <label className="form-check-label" for="rojo">rojo</label> -->

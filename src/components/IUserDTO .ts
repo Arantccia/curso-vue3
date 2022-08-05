@@ -14,7 +14,7 @@ interface Itodo {
   id:  number,
   name: string,
   descripcion:string,
-  completed: boolean
+  completed: boolean,
 }
 
 enum Emat {

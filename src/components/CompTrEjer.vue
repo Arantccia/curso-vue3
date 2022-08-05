@@ -6,43 +6,55 @@ import { Itodo } from "./IUserDTO ";
 export default vue.defineComponent({
   name: "CompTrEjer",
   inject: ["changeJason", "removeJason"],
-
+  emits: ["showForm"],
+  beforeUpdate() {
+    console.log(this.$refs);
+    console.log("beforeUpdatee tr");
+  },
   props: {
     value: {
       type: Object as vue.PropType<Itodo>,
       required: true,
     },
+    ind: Number,
   },
 
   data() {
     return {
-      showForm: false as boolean,
+      val: this.value as Itodo,
+      showFormtr: false as boolean,
     };
   },
 
   methods: {
     complete() {
-      console.log(`este es el id de complete ${this.value.id}`);
-      Reflect.apply(this.changeJason, null, [this.value.id]);
+      console.log(`este es el id de complete ${this.val.id}`);
+      Reflect.apply(this.changeJason, null, [this.val.id]);
     },
 
     remove() {
-      console.log(`este es el id de delete ${this.value.id}`);
-      Reflect.apply(this.removeJason, null, [this.value.id]);
+      console.log(`este es el id de delete ${this.val.id}`);
+      Reflect.apply(this.removeJason, null, [this.val.id]);
+    },
+    clickForm() {
+      this.showFormtr = true;
+      this.$emit("showForm", this.val, this.showFormtr);
     },
   },
 });
+//className="cursor-pointer"
 </script>
 
 <template>
-  <tr>
-    <th scope="row">0</th>
-    <td>{{ value.id }}</td>
-    <td>{{ value.name }}</td>
-    <td>{{ value.descripcion }}</td>
+  {{}}
+  <tr v-on:click="clickForm">
+    <th scope="row">{{ ind }} {{ showFormtr }}</th>
+    <td>{{ val.id }}</td>
+    <td>{{ val.name }}</td>
+    <td>{{ val.descripcion }}</td>
     <td>
-      <span v-if="value.completed === true"> Si, terminado </span>
-      <span v-if="value.completed === false"> No, terminado</span>
+      <span v-if="val.completed === true"> Si, terminado </span>
+      <span v-if="val.completed === false"> No, terminado</span>
     </td>
     <td>
       <button className="btn btn-outline-dark" v-on:click="complete">complete</button>
@@ -52,3 +64,10 @@ export default vue.defineComponent({
     </td>
   </tr>
 </template>
+
+<style scoped>
+tr:hover {
+  cursor: pointer;
+  background-color: #0d6efd;
+}
+</style>
