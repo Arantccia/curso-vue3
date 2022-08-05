@@ -32,8 +32,6 @@ export default vue.defineComponent({
   },
   methods: {
     showFormtr(data, boolean) {
-      console.log("tabla");
-      console.log(data);
       this.showForm = boolean;
       this.valueObject = { ...data };
     },

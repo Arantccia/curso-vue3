@@ -1,126 +1,123 @@
 <script lang="ts">
-
 import * as vue from "vue";
 import H1 from "./H1.vue";
 import Parra from "./Parra.vue";
 import TablaVue from "./Tabla.vue";
 import ComponentDim1Vue from "./ComponentDim1.vue";
 import ComponentDim2Vue from "./ComponentDim2.vue";
-import ComponentSlot from "./ComponentSlot.vue"
+import ComponentSlot from "./ComponentSlot.vue";
 import CompFormDifVue from "./CompFormDif.vue";
-import { IUserDTO, Itodo } from "./IUserDTO "
-import todoList from "./todoList.json"
+import { IUserDTO, Itodo } from "./IUserDTO ";
+import todoList from "./todoList.json";
 import { faCommentsDollar } from "@fortawesome/free-solid-svg-icons";
 import CompTeleport from "./CompTeleport.vue";
-import CompRadioTabla from "./CompRadioTabla.vue"
-
-
-
-
+import CompRadioTabla from "./CompRadioTabla.vue";
 
 export default vue.defineComponent({
- 
-    beforeCreate() { },
-        created() {
-           /*  console.log(this.$props) 
+  beforeCreate() {},
+  created() {
+    /*  console.log(this.$props) 
             console.log(this.$data)  */
-        /*    setInterval(() => {
+    /*    setInterval(() => {
                 this.persona.age = Math.random()*100
-            }, 1000) */ 
-        },
-        name: "App",
-      
-        components: {
-            H1,
-            Parra,
-            TablaVue,
-            ComponentDim1Vue,
-            ComponentDim2Vue,
-            ComponentSlot,
-            CompFormDifVue,
-            CompTeleport,
-            CompRadioTabla
-        },
-        
-        data() {
-            return {
-                persona:{
-                    name: 'Juan',
-                    surname: 'Perez',
-                    age:10
-                    } as IUserDTO
-                ,
-                todoDTOS: todoList as Itodo[],
-                componentId: "ComponentDim1Vue",
-                objecClass:{
-                 'text-warning': true as boolean,
-                 'text-info': false as boolean
-                }
-            }
-        },
-        methods: {
-            changeJason(id) {
-                console.log('estoy en changeJason')
-                 this.todoDTOS.find(data => {
-                  if (data.id === id) {
-                        console.log(data)
-                      if (data.completed === true) {
-                            data.completed = false
-                      } else {
-                            data.completed = true
-                        }
-                    }
-                })
-            },
-            removeJason(id) {
-                console.log('removeJason')
-                const index = this.todoDTOS.findIndex(data => data.id === id)
-                this.todoDTOS.splice(index,1)   
-            },
+            }, 1000) */
+  },
+  name: "App",
 
-            changeComponent (component:string):void{
-            const me = this;
-            me.componentId = component;
-            console.log(component);
-            console.log(me.componentId);
-                if(component === "ComponentDim1Vue"){
-                    me.componentId = "ComponentDim2Vue" 
-                    me.objecClass['text-info'] = false
-                    me.objecClass['text-warning'] = true
-                } else{
-                    me.componentId = "ComponentDim1Vue"
-                    me.objecClass['text-info'] = true
-                    me.objecClass['text-warning'] = false
-                }
-            
-            }
-        },
+  components: {
+    H1,
+    Parra,
+    TablaVue,
+    ComponentDim1Vue,
+    ComponentDim2Vue,
+    ComponentSlot,
+    CompFormDifVue,
+    CompTeleport,
+    CompRadioTabla,
+  },
 
-        provide(): Record<string, unknown> {
-            return {
-                random: vue.computed(() => this.todoDTOS),
-                listToDo: vue.computed(() => this.todoDTOS),
-                changeJason: vue.computed(() => this.changeJason),
-                removeJason: vue.computed(() => this.removeJason)
-            }
-        } ,
-                      
-} );
+  data() {
+    return {
+      persona: {
+        name: "Juan",
+        surname: "Perez",
+        age: 10,
+      } as IUserDTO,
+      todoDTOS: todoList as Itodo[],
+      componentId: "ComponentDim1Vue",
+      objecClass: {
+        "text-warning": true as boolean,
+        "text-info": false as boolean,
+      },
+    };
+  },
+  methods: {
+    changeJason(id) {
+      //console.log('estoy en changeJason')
+      this.todoDTOS.find((data) => {
+        if (data.id === id) {
+          //console.log(data)
+          if (data.completed === true) {
+            data.completed = false;
+          } else {
+            data.completed = true;
+          }
+        }
+      });
+    },
+    changeInputJason(value) {
+      console.log("estoy en changeInputJason");
+      this.todoDTOS.find((data) => {
+        if (data.id === value.id) {
+          data.name = value.name;
+          data.descripcion = value.descripcion;
+        }
+      });
+    },
+    removeJason(id) {
+      // console.log('removeJason')
+      const index = this.todoDTOS.findIndex((data) => data.id === id);
+      this.todoDTOS.splice(index, 1);
+    },
 
+    changeComponent(component: string): void {
+      const me = this;
+      me.componentId = component;
+      console.log(component);
+      console.log(me.componentId);
+      if (component === "ComponentDim1Vue") {
+        me.componentId = "ComponentDim2Vue";
+        me.objecClass["text-info"] = false;
+        me.objecClass["text-warning"] = true;
+      } else {
+        me.componentId = "ComponentDim1Vue";
+        me.objecClass["text-info"] = true;
+        me.objecClass["text-warning"] = false;
+      }
+    },
+  },
+
+  provide(): Record<string, unknown> {
+    return {
+      random: vue.computed(() => this.todoDTOS),
+      listToDo: vue.computed(() => this.todoDTOS),
+      changeJason: vue.computed(() => this.changeJason),
+      removeJason: vue.computed(() => this.removeJason),
+      changeInputJason: vue.computed(() => this.changeInputJason),
+    };
+  },
+});
 </script>
 
 <template>
-  
-    <div className="container">
-          <h1 class="bg-primary text-white text-center p-4"> APP</h1> 
-            <CompRadioTabla />
+  <div className="container">
+    <h1 class="bg-primary text-white text-center p-4">APP</h1>
+    <CompRadioTabla />
 
-
-
-          <!-- <CompTeleport /> -->
-            <!-- <hr/>
+    <!-- <CompTeleport /> -->
+    <!-- <hr/>
              <H1 text="Estamos en el componente H1" /> -->
-        <!-- <hr/>     
+    <!-- <hr/>     
          <Parra v-bind:person="persona" />
         <hr/>  
          <TablaVue prueba="prueba" idAtrrs="15"  v-bind:todoDTO="todoDTOS" v-on:change="changeJason" v-bind:remuve="removeJason" />
@@ -130,9 +127,9 @@ export default vue.defineComponent({
         </keep-alive>
          <h3  v-bind:class="objecClass"> sin keep-alive</h3>
         <component v-bind:is="componentId" /> -->
-        <!-- <button type="button" className="btn btn-primary" v-on:click="changeComponent(componentId)">cambiar el componente</button>  -->
-      
-<!--         <ComponentSlot />
+    <!-- <button type="button" className="btn btn-primary" v-on:click="changeComponent(componentId)">cambiar el componente</button>  -->
+
+    <!--         <ComponentSlot />
         <ComponentSlot>
             <template v-slot:default="slotLoop" > <h3>v-slot:default</h3> {{slotLoop.listname}} -{{ slotLoop.listcompleted}} </template>
             <template v-slot:content >
@@ -150,10 +147,6 @@ export default vue.defineComponent({
             <template v-slot:content="name" > contenido data hijo {{name}}-{{name.nombre}}-{{name.apellido}}</template>
         </ComponentSlot>
     <H1 text="Estamos en el componente H1" /> -->
-   <!--  <CompFormDifVue /> -->
-        
-    </div>
-   
-  
-    
+    <!--  <CompFormDifVue /> -->
+  </div>
 </template>

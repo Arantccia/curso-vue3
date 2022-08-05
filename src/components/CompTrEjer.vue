@@ -33,7 +33,7 @@ export default vue.defineComponent({
     },
 
     remove() {
-      console.log(`este es el id de delete ${this.val.id}`);
+      //console.log(`este es el id de delete ${this.val.id}`);
       Reflect.apply(this.removeJason, null, [this.val.id]);
     },
     clickForm() {
@@ -48,7 +48,7 @@ export default vue.defineComponent({
 <template>
   {{}}
   <tr v-on:click="clickForm">
-    <th scope="row">{{ index }} {{ showFormtr }}</th>
+    <th scope="row">{{ index }}</th>
     <td>{{ val.id }}</td>
     <td>{{ val.name }}</td>
     <td>{{ val.descripcion }}</td>
