@@ -12,6 +12,8 @@ import todoList from "./todoList.json";
 import { faCommentsDollar } from "@fortawesome/free-solid-svg-icons";
 import CompTeleport from "./CompTeleport.vue";
 import CompRadioTabla from "./CompRadioTabla.vue";
+import CompSlotFootEje from "./CompSlotFootEje.vue";
+import CompSloNavEje from "./CompSlotNavEje.vue";
 
 export default vue.defineComponent({
   beforeCreate() {},
@@ -34,6 +36,8 @@ export default vue.defineComponent({
     CompFormDifVue,
     CompTeleport,
     CompRadioTabla,
+    CompSlotFootEje,
+    CompSloNavEje,
   },
 
   data() {
@@ -110,14 +114,25 @@ export default vue.defineComponent({
 </script>
 
 <template>
-  <div className="container">
-    <h1 class="bg-primary text-white text-center p-4">APP</h1>
-    <CompRadioTabla />
+  <div>
+    <CompSloNavEje />
+    <div className="container">
+      <CompRadioTabla />
+      <hr />
+    </div>
+    <CompSlotFootEje>
+      <template v-slot:footerh52> Arsys Company </template>
+      <template v-slot:footerText1>
+        <img src="https://picsum.photos/150" />
+      </template>
+    </CompSlotFootEje>
+  </div>
+</template>
 
-    <!-- <CompTeleport /> -->
-    <!-- <hr/>
+<!-- <CompTeleport /> -->
+<!-- <hr/>
              <H1 text="Estamos en el componente H1" /> -->
-    <!-- <hr/>     
+<!-- <hr/>     
          <Parra v-bind:person="persona" />
         <hr/>  
          <TablaVue prueba="prueba" idAtrrs="15"  v-bind:todoDTO="todoDTOS" v-on:change="changeJason" v-bind:remuve="removeJason" />
@@ -127,9 +142,9 @@ export default vue.defineComponent({
         </keep-alive>
          <h3  v-bind:class="objecClass"> sin keep-alive</h3>
         <component v-bind:is="componentId" /> -->
-    <!-- <button type="button" className="btn btn-primary" v-on:click="changeComponent(componentId)">cambiar el componente</button>  -->
+<!-- <button type="button" className="btn btn-primary" v-on:click="changeComponent(componentId)">cambiar el componente</button>  -->
 
-    <!--         <ComponentSlot />
+<!--         <ComponentSlot />
         <ComponentSlot>
             <template v-slot:default="slotLoop" > <h3>v-slot:default</h3> {{slotLoop.listname}} -{{ slotLoop.listcompleted}} </template>
             <template v-slot:content >
@@ -147,6 +162,4 @@ export default vue.defineComponent({
             <template v-slot:content="name" > contenido data hijo {{name}}-{{name.nombre}}-{{name.apellido}}</template>
         </ComponentSlot>
     <H1 text="Estamos en el componente H1" /> -->
-    <!--  <CompFormDifVue /> -->
-  </div>
-</template>
+<!--  <CompFormDifVue /> -->

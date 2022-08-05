@@ -1,6 +1,7 @@
 <script lang="ts">
 import * as vue from "vue";
 import { Itodo } from "./IUserDTO ";
+import CompSlotEncabtEje from "./CompSlotEncabEjer.vue";
 
 export default vue.defineComponent({
   mounted() {
@@ -9,6 +10,7 @@ export default vue.defineComponent({
 
   name: "CompFormEjer",
   inject: ["changeInputJason"],
+  components: { CompSlotEncabtEje },
   props: {
     valueObject: {
       type: Object as vue.PropType<Itodo>,
@@ -44,7 +46,6 @@ export default vue.defineComponent({
           me.objecClass["text-danger"] = true;
         }
         if (newValue.length === 2 || newValue.length === 0) {
-          console.log("entra aquí");
           me.objecClass["fw-bold"] = false;
           me.objecClass["text-danger"] = false;
         }
@@ -56,6 +57,9 @@ export default vue.defineComponent({
 
 <template>
   <div className="formu">
+    <CompSlotEncabtEje>
+      <template v-slot:encabezado> Edita tarea </template>
+    </CompSlotEncabtEje>
     <form>
       <div className="form-inline text-center mt-2 mb-2">
         <div className="form-check my-1 me-sm-2">
