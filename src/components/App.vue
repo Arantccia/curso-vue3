@@ -58,6 +58,9 @@ export default vue.defineComponent({
   methods: {
     changeJason(id) {
       //console.log('estoy en changeJason')
+
+      console.log(this.todoDTOS);
+
       this.todoDTOS.find((data) => {
         if (data.id === id) {
           //console.log(data)

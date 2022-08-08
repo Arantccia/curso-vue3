@@ -102,8 +102,8 @@ export default vue.defineComponent({
           </div>
           <div id="descripcionHelp" className="form-text">Campo obligatorío</div>
         </div>
-        <button type="submit" class="btn btn-primary btn-lg mt-3" v-on:click="editValue">
-          Grabar cambios
+        <button type="button" class="btn btn-primary btn-lg mt-3" v-on:click="editValue">
+          Grabar cambiosss
         </button>
       </div>
     </form>

@@ -15,6 +15,8 @@ export default vue.defineComponent({
   </div>
   <nav class="navbar navbar-dark bg-primary">
     <div class="container-fluid">
+      <h5 class="text-white h4 flex-center">Inicio</h5>
+      <slot name="radioButton"></slot>
       <button
         class="navbar-toggler"
         type="button"

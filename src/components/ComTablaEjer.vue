@@ -34,6 +34,7 @@ export default vue.defineComponent({
     showFormtr(data, boolean) {
       this.showForm = boolean;
       this.valueObject = { ...data };
+      console.log(this.listToDo);
     },
   },
 });
