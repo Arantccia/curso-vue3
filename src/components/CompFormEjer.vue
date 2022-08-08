@@ -10,6 +10,7 @@ export default vue.defineComponent({
 
   name: "CompFormEjer",
   inject: ["changeInputJason"],
+  emits: ["hidenForm"],
   components: { CompSlotEncabtEje },
   props: {
     valueObject: {
@@ -30,6 +31,7 @@ export default vue.defineComponent({
   methods: {
     editValue() {
       Reflect.apply(this.changeInputJason, null, [this.valueObject]);
+      this.$emit("hidenForm", false);
     },
   },
   watch: {
@@ -103,7 +105,7 @@ export default vue.defineComponent({
           <div id="descripcionHelp" className="form-text">Campo obligatorío</div>
         </div>
         <button type="button" class="btn btn-primary btn-lg mt-3" v-on:click="editValue">
-          Grabar cambiosss
+          Grabar cambios
         </button>
       </div>
     </form>

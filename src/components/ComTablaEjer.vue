@@ -34,7 +34,11 @@ export default vue.defineComponent({
     showFormtr(data, boolean) {
       this.showForm = boolean;
       this.valueObject = { ...data };
-      console.log(this.listToDo);
+    },
+    hideForm(boolean) {
+      if (boolean === false) {
+        this.showForm = boolean;
+      }
     },
   },
 });
@@ -62,6 +66,10 @@ export default vue.defineComponent({
       </tbody>
     </table>
 
-    <CompFormEjer v-if="showForm" v-bind:valueObject="valueObject" />
+    <CompFormEjer
+      v-if="showForm"
+      v-bind:valueObject="valueObject"
+      v-on:hidenForm="hideForm"
+    />
   </div>
 </template>
