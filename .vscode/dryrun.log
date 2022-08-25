@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/abujalance/Vue3/curso-vue3'
+make: Leaving directory '/home/abujalance/Vue3/curso-vue3'
+ 
+Makefile:27: *** You must run "make boot" first.  Stop.
+

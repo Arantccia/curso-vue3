@@ -16,15 +16,12 @@ import CompSlotFootEje from "./CompSlotFootEje.vue";
 import CompSloNavEje from "./CompSlotNavEje.vue";
 
 export default vue.defineComponent({
-  beforeCreate() {},
-  created() {
-    /*  console.log(this.$props) 
-            console.log(this.$data)  */
-    /*    setInterval(() => {
-                this.persona.age = Math.random()*100
-            }, 1000) */
-  },
   name: "App",
+
+  mounted() {
+    console.log("entra en app  mounted");
+    console.log(this.$refs.radioBtn);
+  },
 
   components: {
     H1,
@@ -120,7 +117,7 @@ export default vue.defineComponent({
   <div>
     <CompSloNavEje />
     <div className="container">
-      <CompRadioTabla />
+      <CompRadioTabla ref="radioBtn" />
       <hr />
     </div>
     <CompSlotFootEje>

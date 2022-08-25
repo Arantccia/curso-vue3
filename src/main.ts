@@ -8,6 +8,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import  'bootstrap/dist/css/bootstrap.css' 
 import  'bootstrap-vue-3/dist/bootstrap-vue-3.css'
 
+
 import {directiveAran} from "./directivas/directivasAran"
 
 
