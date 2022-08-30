@@ -1,6 +1,10 @@
-import { legacy_createStore } from 'redux'
+import { createStore } from 'redux'
 
 
+
+const initialState = {
+  value: 0
+};
 
 
 function counter(state = 0, action) {
@@ -14,7 +18,7 @@ function counter(state = 0, action) {
     }
   }
 
-  let store = legacy_createStore (counter)
+  let store = createStore (counter)
 
   store.subscribe(() => console.log(store.getState()))
 
@@ -26,3 +30,5 @@ store.dispatch({ type: 'INCREMENT' })
 // 2
 store.dispatch({ type: 'DECREMENT' })
 // 1
+
+
