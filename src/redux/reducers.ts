@@ -8,9 +8,13 @@ import {setVisibilityFilter, addTodo, changeTodos, deleteTodo } from "./actions"
 
  function reducerTodo(state = todoState, action) {
     switch (action.type) {
-      case 'INCREMENT':
+      case 'ADD_TODO':
         return state 
-      case 'DECREMENT':
+      case 'DELETE_TODO':
+        return state 
+      case 'CHANGE_TODO':
+        return state 
+      case 'SET_VISIBILITY_FILTER':
         return state 
       default:
         return state

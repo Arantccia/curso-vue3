@@ -1,7 +1,15 @@
-import { createStore } from 'redux'
+import { createStore,compose, applyMiddleware  } from 'redux'
 import {reducerTodo} from "./reducers"
+import thunk from 'redux-thunk';
 
-
-let store = createStore (reducerTodo)
+declare global {
+    interface Window {
+      __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+      __REDUX_DEVTOOLS_EXTENSION__
+    }
+  }
+const store = createStore (reducerTodo, 
+    window. __REDUX_DEVTOOLS_EXTENSION_COMPOSE__&& window. __REDUX_DEVTOOLS_EXTENSION_COMPOSE__(applyMiddleware(thunk)),
+    )
 
 store.subscribe(() => console.log(store.getState()))
