@@ -1,5 +1,5 @@
 import { createStore,compose, applyMiddleware  } from 'redux'
-import {reducerTodo} from "./reducers"
+import todoApp from "./reducers"
 import thunk from 'redux-thunk';
 
 declare global {
@@ -8,7 +8,7 @@ declare global {
       __REDUX_DEVTOOLS_EXTENSION__
     }
   }
-const store = createStore (reducerTodo, 
+const store = createStore (todoApp, 
     window. __REDUX_DEVTOOLS_EXTENSION_COMPOSE__&& window. __REDUX_DEVTOOLS_EXTENSION_COMPOSE__(applyMiddleware(thunk)),
     )
 

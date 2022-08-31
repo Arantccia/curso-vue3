@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-Makefile:27: *** You must run "make boot" first.  Stop.
-
 # GNU Make 4.3
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ Makefile:27: *** You must run "make boot" first.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Aug 30 07:12:17 2022
+# Make data base, printed on Wed Aug 31 12:00:17 2022
 
 # Variables
 
@@ -59,7 +57,7 @@ VSCODE_CODE_CACHE_PATH = /home/abujalance/.config/Code/CachedData/e4503b30fc7820
 # environment
 LANG = C
 # environment
-XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.LY4DR1
+XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.A9DER1
 # default
 .LOADED := 
 # default
@@ -103,7 +101,7 @@ SNAP_REEXEC =
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 6905
+VSCODE_PID = 5090
 # environment
 XDG_SESSION_TYPE = wayland
 # automatic
@@ -111,7 +109,7 @@ XDG_SESSION_TYPE = wayland
 # environment
 BAMF_DESKTOP_FILE_HINT = /var/lib/snapd/desktop/applications/code_code.desktop
 # environment
-SESSION_MANAGER = local/185673:@/tmp/.ICE-unix/2477,unix/185673:/tmp/.ICE-unix/2477
+SESSION_MANAGER = local/185673:@/tmp/.ICE-unix/2466,unix/185673:/tmp/.ICE-unix/2466
 # automatic
 *F = $(notdir $*)
 # environment
@@ -159,7 +157,7 @@ SNAP_USER_COMMON = /home/abujalance/snap/code/common
 # environment
 SNAP = /snap/code/105
 # environment
-INVOCATION_ID = 13bb0c4eb73f4500bcf9b366eb6f4a17
+INVOCATION_ID = 439b2f545b67402286c2d85e927e151d
 # environment
 SNAP_REVISION = 105
 # environment
@@ -197,7 +195,7 @@ SNAP_ARCH = amd64
 # makefile
 .DEFAULT_GOAL := check
 # environment
-SYSTEMD_EXEC_PID = 2499
+SYSTEMD_EXEC_PID = 2494
 # environment
 DISPLAY = :0
 # environment
@@ -217,9 +215,9 @@ SNAP_CONTEXT = eWhEUYTnRcfyud3H4OEf3dZCSZ3DThYvbpgd-LEXUAFmsQkCqd2S
 # makefile (from 'Makefile', line 18)
 IMAGE_VERSION := latest
 # environment
-MANAGERPID = 2250
+MANAGERPID = 2238
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 6862
+GIO_LAUNCHED_DESKTOP_FILE_PID = 5048
 # environment
 _ = /snap/code/105/usr/share/code/code
 # environment
@@ -229,7 +227,7 @@ CMD_ROOT_PERMISSIONS := sh /root/bootstrap.sh; chown -R root:root .
 # environment
 GDK_PIXBUF_MODULE_FILE = /home/abujalance/snap/code/common/.cache/gdk-pixbuf-loaders.cache
 # environment
-JOURNAL_STREAM = 8:39482
+JOURNAL_STREAM = 8:38551
 # environment
 XDG_SESSION_CLASS = user
 # environment
@@ -279,7 +277,6 @@ IMAGE_REPO := ngcs-dev-tools01.arsysdesarrollo.lan:5000
 # environment
 XDG_MENU_PREFIX = gnome-
 # makefile (from 'Makefile', line 5)
- 
 BOOTSTRAP := sh /root/bootstrap.sh
 # environment
 GDMSESSION = ubuntu
@@ -346,7 +343,10 @@ all:
 
 # strcache performance: lookups = 33 / hit rate = 21%
 # hash-table stats:
+ 
+Makefile:27: *** You must run "make boot" first.  Stop.
+
 # Load=26/8192=0%, Rehash=0, Collisions=0/33=0%
-# Finished Make data base on Tue Aug 30 07:12:17 2022
+# Finished Make data base on Wed Aug 31 12:00:17 2022
 
  
