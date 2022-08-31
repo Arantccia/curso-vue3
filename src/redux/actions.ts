@@ -3,7 +3,6 @@
 export const addTodo = (name:string, description:string = 'pdt', completed: boolean = false) => {
   return {
     type: 'ADD_TODO',
-    id: Math.random(),
     name: name ,
     descripcion: description,
     completed: completed
@@ -34,12 +33,19 @@ export const changeTodo = (obj: {id:number, name:string, description:string, com
   }
 }
 
-export const changeTodos = (id:number, name?:string, description:string = 'pdt', completed: boolean = false) => {
+export const changeTodos = (id:number, name?:string, description:string = 'pdt') => {
   return {
     type: 'CHANGE_TODOS',
     id: id,
     name: name ,
     descripcion: description,
+  }
+}
+
+export const changeDone = (id:number, completed: boolean) => {
+  return {
+    type: 'CHANGE_DONE',
+    id: id,
     completed: completed
   }
 }

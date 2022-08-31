@@ -2,7 +2,7 @@
 import { func } from 'prop-types'
 import { combineReducers } from 'redux'
 import todoList from "../components/todoList.json"
-import {setVisibilityFilter, addTodo, changeTodos, deleteTodo } from "./actions" 
+import {setVisibilityFilter, addTodo, changeTodos, deleteTodo, changeDone } from "./actions" 
 
  const todoState = todoList
  const filter = false
@@ -11,15 +11,32 @@ import {setVisibilityFilter, addTodo, changeTodos, deleteTodo } from "./actions"
  function reducerTodo(state = todoState, action) {
     switch (action.type) {
       case 'ADD_TODO':
-        return state 
+        return {...state,
+        id:Math.random(),
+        name: action.name,
+        description: action.description,
+        completed: action.completed
+      } 
       case 'DELETE_TODO':
         const index = state.findIndex((data) => data.id === action.id);
-        state.splice(index, 1);
-        return state 
+        return state.splice(index, 1);      
       case 'CHANGE_TODO':
-        return state 
-      case 'SET_VISIBILITY_FILTER':
-        return state 
+       return state.find((data) => {
+          if (data.id === action.id) {
+            data.name = action.name;
+            data.descripcion = action.descripcion
+          }})
+        
+      case 'CHANGE_DONE':
+        return  state.find((data) => {
+            if (data.id === action.id) {
+              if (data.completed === true) {
+                data.completed = false;
+              } else {
+                data.completed = true;
+              }
+            }
+          });  
       default:
         return state
     }
